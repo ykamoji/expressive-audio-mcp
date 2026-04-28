@@ -1,12 +1,12 @@
-from core.claude import Claude
+from core.claude import Claude, GeminiBridge
 from mcp_client import MCPClient
 from core.tools import ToolManager
 from anthropic.types import MessageParam
 
 
 class Chat:
-    def __init__(self, claude_service: Claude, clients: dict[str, MCPClient]):
-        self.claude_service: Claude = claude_service
+    def __init__(self, claude_service: GeminiBridge, clients: dict[str, MCPClient]):
+        self.claude_service: GeminiBridge = claude_service
         self.clients: dict[str, MCPClient] = clients
         self.messages: list[MessageParam] = []
 

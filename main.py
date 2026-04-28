@@ -1,3 +1,4 @@
+from core.claude import GeminiBridge
 import asyncio
 import sys
 import os
@@ -15,6 +16,8 @@ load_dotenv()
 # Anthropic Config
 claude_model = os.getenv("CLAUDE_MODEL", "")
 anthropic_api_key = os.getenv("ANTHROPIC_API_KEY", "")
+google_api_key = os.getenv("GOOGLE_API_KEY", "")
+gemini_model = os.getenv("GEMINI_MODEL", "")
 
 
 assert claude_model, "Error: CLAUDE_MODEL cannot be empty. Update .env"
@@ -24,7 +27,7 @@ assert anthropic_api_key, (
 
 
 async def main():
-    claude_service = Claude(model=claude_model)
+    claude_service = GeminiBridge(model=gemini_model, api_key=google_api_key)
 
     server_scripts = sys.argv[1:]
     clients = {}
